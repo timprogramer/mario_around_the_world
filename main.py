@@ -17,14 +17,18 @@ def right():
 
 @wrap.on_key_always(wrap.K_LEFT)
 def left():
-    if wrap.sprite.is_collide_sprite(player,menu)==False :
+    if wrap.sprite.is_collide_sprite(player,menu)==False and wrap.sprite.is_visible(menu) == True:
         wrap.sprite.set_reverse_x(player,True)
         wrap.sprite.move(player, -10, 0)
         wrap.sprite.set_costume(player, "walk1")
     elif wrap.sprite.is_collide_sprite(player, menu) == True:
         wrap.sprite.move_to(player, 960, 540)
     if wrap.sprite.get_left(player) <= 0 :
-        wrap.world.set_back_color(0,0,0)
+        wrap.world.set_back_image('C:/Users/Tim GF63/Downloads/imgonline-com-ua-Resize-dc6B9AZEgPA3.jpg')
+        wrap.sprite.move_to(player,1880,540)
+        wrap.sprite.add("battle_city_items", 1910, 540,"effect_appearance4")
+        wrap.sprite.hide(menu)
+    elif wrap.sprite.is_visible(menu) == False:
 
 @wrap.on_key_always(wrap.K_UP)
 def up():
